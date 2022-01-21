@@ -1,1 +1,2 @@
-# MiniProjetAssignments_Web
+# Mini Projet Web : Assignments
+# FRONT
