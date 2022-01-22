@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    gap: 15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .pagination {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  table {
+    width: 1000px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+  }
+  
+  th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+  }
+  
+  .rendu {
+    color: green;
+  }
+  
+  .nonRendu {
+    color: red;
+    background-color: yellow;
+    border: 3px dashed purple;
+  }
+  
+  .important {
+    font-size: 40px;
+  }
+  
+  .ajouterBtn {
+    align-self: flex-end;
+  }
+  

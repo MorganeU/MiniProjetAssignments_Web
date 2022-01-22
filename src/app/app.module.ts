@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -26,6 +27,7 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { Routes, RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
+import { TableAssignmentsComponent } from './assignments/table-assignments/table-assignments.component';
 
 const routes: Routes = [
   {
@@ -57,7 +59,8 @@ const routes: Routes = [
     RenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    TableAssignmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,7 @@ const routes: Routes = [
     FormsModule, MatInputModule, MatDatepickerModule,
     MatNativeDateModule, MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule, HttpClientModule,
-    MatTableModule,MatSortModule,MatFormFieldModule,
+    MatTableModule,MatSortModule,MatFormFieldModule,MatTabsModule,
     RouterModule.forRoot(routes)
   ],
   exports:[
