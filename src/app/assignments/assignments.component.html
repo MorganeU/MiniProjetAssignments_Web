@@ -1,5 +1,5 @@
 <main class="container">
-  <div class="ajouterBtn">
+  <div class="row">
     <a routerLink="/add">
       <button mat-flat-button color="accent">
         Ajouter Assignment
@@ -7,33 +7,45 @@
     </a>
   </div>
 
-  <h2>Liste des assignments :</h2>
-  Nb assignments par page :
-  <input type=range min=2 max=100 value=10 [(ngModel)]="limit" (change)="getAssignments()"> {{limit}}
-<div class="pagination">
-  <button mat-stroked-button color="primary"
-          (click)="premierePage()"
-          [disabled]="page===1"
-  >Première page</button>
-  &nbsp;
-  <button mat-stroked-button color="primary"
-          (click)="pagePrecedente()"
-          [disabled]="!hasPrevPage"
-  >Page précédente</button>
-  &nbsp;
-  <button mat-stroked-button color="primary"
-          (click)="pageSuivante()"
-          [disabled]="!hasNextPage"
-          >Page suivante</button>
-  &nbsp;
-  <button mat-stroked-button color="primary"
-          (click)="dernierePage()"
-          [disabled]="page===totalPages"
-  >Dernière page</button>
-</div>
-  <mat-list *ngFor="let assignment of assignments">
+  <div class="row">
+    <h2>Liste des assignments :</h2>
+  </div>
+
+  <!-- FILTRES SUR LA TABLE -->
+  <div class="row">
+    <mat-form-field appearance="standard">
+      <mat-label>Filtrer par nom de devoir</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Nom" #input [(ngModel)]="search">
+    </mat-form-field>
+  </div>
+
+  <!-- TABLE DES ASSIGNMENTS -->
+  <div class="row">
+    <table mat-table [dataSource]="data" class="table" matSort >
+      <!-- Nom du devoir -->
+      <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Nom du devoir </th>
+        <td mat-cell *matCellDef="let row">{{row.nom}}</td>
+      </ng-container>
+      <!-- Date de rendu -->
+      <ng-container matColumnDef="Date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Date </th>
+        <td mat-cell *matCellDef="let row">{{row.dateDeRendu | date}}</td>
+      </ng-container>
+      <!-- Rendu ou non -->
+      <ng-container matColumnDef="Etat">
+        <th mat-header-cell *matHeaderCellDef> Etat </th>
+        <td mat-cell *matCellDef="let row">{{getRendu(row.rendu)}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- <mat-list *ngFor="let assignment of assignments">
     <nav>
-      <a routerLink="/assignment/{{assignment.id}}">
+      <a routerLink="/assignment/{{assignment.id}}""">
         <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date}}</h3>
         <mat-list-item>
           <p *ngIf="assignment.rendu; else nonsoumis" appRendu>
@@ -47,6 +59,24 @@
         </mat-list-item>
       </a>
     </nav>
-  </mat-list>
+  </mat-list> -->
 
+  <div class="column">
+    <div class="pagination">
+      <button mat-stroked-button color="primary" (click)="premierePage()" [disabled]="page===1">Première page</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" (click)="pagePrecedente()" [disabled]="!hasPrevPage">Page
+        précédente</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" (click)="pageSuivante()" [disabled]="!hasNextPage">Page
+        suivante</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" (click)="dernierePage()" [disabled]="page===totalPages">Dernière
+        page</button>
+    </div>
+    <div class="row">
+      Nb assignments par page :
+    <input type=range min=2 max=100 value=10 [(ngModel)]="limit" (change)="getAssignments()"> {{limit}}
+    </div>
+  </div>
 </main>
