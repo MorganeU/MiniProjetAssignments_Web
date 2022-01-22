@@ -1,18 +1,28 @@
-<h1>
-  <nav>
-    <a routerLink="/home">
-      {{title}}
-    </a>
-  </nav>
-</h1>
+<div class="bar">
+  <a routerLink="/home">
+    <button mat-flat-button color="primary">
+      <mat-icon>home</mat-icon>
+    </button>
+  </a>
+  <a routerLink="/add">
+    <button mat-flat-button color="primary">
+      <mat-icon>library_add</mat-icon>
+    </button>
+  </a>
+</div>
 
-<mat-slide-toggle (click)="login()">Login</mat-slide-toggle>
-<br>
-<button mat-raised-button
-        color="primary"
-        (click)="remplirBD()"
->
+<div class="container">
+  <div class="column">
+    <div class="row">
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="row">
+      <mat-slide-toggle (click)="login()">Login</mat-slide-toggle>
+      <button mat-raised-button color="primary" (click)="remplirBD()">
         PEUPLER BD
-</button>
+      </button>
+    </div>
+  </div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

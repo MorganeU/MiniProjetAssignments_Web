@@ -1,0 +1,18 @@
+:host::ng-deep .mat-ripple:not(:empty) {
+  color: white;
+}
+
+:host::ng-deep .mat-tab-labels {
+  background-color: #212132;
+}
+
+:host::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #f09900;
+}
+
+.tab {
+  position: relative;
+  left: 130px;
+  top: 40px;
+}

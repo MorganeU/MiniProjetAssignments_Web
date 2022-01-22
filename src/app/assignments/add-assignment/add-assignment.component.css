@@ -1,5 +1,15 @@
 .form {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  margin:5px;
+  margin: 5px;
+  position: relative;
+  left: 150px;
+  top: 100px;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  width: fit-content;
 }

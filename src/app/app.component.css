@@ -1,3 +1,50 @@
+.bar {
+  height: 100%;
+  width: 115px;
+  background-color: midnightblue;
+  z-index: 5;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 90px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  gap: 810px;
+  align-items: center;
+  background-color: steelblue;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 0 25px;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+button {
+  height: 40px;
+}
+
 section {
   display: table;
 }
