@@ -7,7 +7,9 @@
 
 .row {
   display: flex;
-  flex-direction: row;
+  flex-direction: row;    
+  align-items: center;    
+  gap: 20px;
 }
 
 .column {
@@ -17,10 +19,18 @@
 }
 
 .pagination {
-  width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 10px;;
+}
+
+.nbpage{
+  display: flex;
+  align-items: center;
+  gap:3px;
+  height: 36px;
+  margin:0 10px;
 }
 
 table {
@@ -51,4 +61,15 @@ th.mat-header-cell {
 
 .ajouterBtn {
   align-self: flex-end;
+}
+
+
+/* FILTERS */
+.filternom{
+  align-items: center;
+}
+
+.filterrendu{
+  align-items: center;
+  height: 37px;
 }
