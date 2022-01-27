@@ -1,12 +1,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  margin: 5px;
+  margin: 40px;
+  border-radius: 19px;
+  background-color: white;
 }
 
-.column{
+.column {
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
   width: fit-content;
 }

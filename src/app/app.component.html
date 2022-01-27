@@ -1,9 +1,12 @@
 <div class="column">
   <div class="row">
+    <button mat-icon-button (click)="clickIcon()">
+      <mat-icon class="menuicon">menu</mat-icon>
+    </button>
     <h2>{{ title }}</h2>
   </div>
   <div class="row">
-    <mat-slide-toggle (click)="login()">Login</mat-slide-toggle>
+    <mat-slide-toggle (click)="login()" [color]="'primary'">Login</mat-slide-toggle>
     <button mat-raised-button color="primary" (click)="remplirBD()">
       PEUPLER BD
     </button>
@@ -11,15 +14,15 @@
 </div>
 
 <div class="container">
-  <div class="bar">
+  <div class="bar" *ngIf="isClicked">
     <a routerLink="/home">
       <button mat-flat-button color="primary">
-        <mat-icon>home</mat-icon>
+        <mat-icon class="iconBar">home</mat-icon> Home
       </button>
     </a>
     <a routerLink="/add">
       <button mat-flat-button color="primary">
-        <mat-icon>library_add</mat-icon>
+        <mat-icon class="iconBar">library_add</mat-icon> Create
       </button>
     </a>
   </div>

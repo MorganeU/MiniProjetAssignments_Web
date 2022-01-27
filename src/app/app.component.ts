@@ -11,11 +11,18 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'Application de gestion des assignments';
 
+isClicked:boolean=false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private assignmentsService: AssignmentsService
   ) {}
+
+  clickIcon(){
+    if (!this.isClicked) this.isClicked=true;
+    else this.isClicked=false;
+  }
 
   login() {
     if (!this.authService.loggedIn) {
