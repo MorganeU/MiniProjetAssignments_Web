@@ -19,7 +19,7 @@
 .column {
   display: flex;
   flex-direction: column;
-  gap: 10px;    
+  gap: 10px;
   color: white;
 }
 
@@ -36,13 +36,12 @@ th.mat-header-cell {
 }
 
 .rendu {
-  color: green;
+  color: #6a6c8a;
 }
 
 .nonRendu {
-  color: red;
-  background-color: yellow;
-  border: 3px dashed purple;
+  color: #f6134f;
+  font-weight: 500;
 }
 
 .important {
@@ -55,17 +54,19 @@ th.mat-header-cell {
   justify-content: space-between;
   align-items: flex-end;
   gap: 10px;
-
 }
 :host::ng-deep .mat-stroked-button:not(.mat-button-disabled) {
-  border-color: rgba(0,0,0,.12);
-  background-color: #FCA85F;
-  color: #9D062E;
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #fca85f;
+  color: #9d062e;
 }
 
-:host::ng-deep .mat-button.mat-button-disabled, .mat-icon-button.mat-button-disabled, .mat-stroked-button.mat-button-disabled, .mat-flat-button.mat-button-disabled {
+:host::ng-deep .mat-button.mat-button-disabled,
+.mat-icon-button.mat-button-disabled,
+.mat-stroked-button.mat-button-disabled,
+.mat-flat-button.mat-button-disabled {
   color: black;
-  background: #393A56;
+  background: #393a56;
 }
 
 .nbpage {
@@ -75,7 +76,6 @@ th.mat-header-cell {
   height: 36px;
   margin: 0 10px;
 }
-
 
 /* FILTERS */
 .filternom {
@@ -87,10 +87,17 @@ th.mat-header-cell {
   height: 37px;
 }
 
-:host::ng-deep .mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+:host::ng-deep .mat-form-field-empty.mat-form-field-label,
+:host::ng-deep .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
   color: white;
 }
 
 :host::ng-deep .mat-form-field-appearance-standard .mat-form-field-underline {
   background-color: white;
+}
+
+:host::ng-deep .cdk-text-field-autofill-monitored:not(:-webkit-autofill),
+:host::ng-deep .mat-form-field-empty.mat-form-field-label,
+:host::ng-deep .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: white;
 }

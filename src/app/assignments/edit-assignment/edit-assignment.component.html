@@ -1,6 +1,6 @@
 <div class="container" *ngIf="assignment">
-  <h2>Edition de l'assignment {{assignment.nom}}</h2>
   <form ngForm class="form">
+    <h3>Edition de l'assignment {{assignment.nom}}</h3>
     <mat-form-field>
       <input matInput placeholder="Edition du nom"
       [(ngModel)]="nomAssignment" name="assignment-name">
