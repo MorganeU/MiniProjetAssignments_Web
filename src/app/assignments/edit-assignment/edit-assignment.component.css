@@ -1,12 +1,9 @@
-h3 {
-  color: black;
-}
-
 .form {
   display: flex;
   flex-direction: column;
   margin: 40px;
-  background-color: white;
+  background-color: #1a1826;
   border-radius: 19px;
-  padding: 15px 40px 40px 40px ;
+  padding: 15px 40px 40px 40px ;    
+  color: white;
 }

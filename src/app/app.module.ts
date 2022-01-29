@@ -14,11 +14,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -64,17 +65,17 @@ const routes: Routes = [
     TableAssignmentsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, MatSelectModule,
     BrowserAnimationsModule, MatButtonToggleModule,
     MatButtonModule, MatIconModule, MatDividerModule,
     FormsModule, MatInputModule, MatDatepickerModule,
     MatNativeDateModule, MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule, HttpClientModule,
-    MatTableModule,MatSortModule,MatFormFieldModule,MatTabsModule,
+    MatTableModule, MatSortModule, MatFormFieldModule, MatTabsModule,
     RouterModule.forRoot(routes)
   ],
-  exports:[
-    MatSortModule,MatFormFieldModule,
+  exports: [
+    MatSortModule, MatFormFieldModule,
     MatInputModule,
   ],
   providers: [],

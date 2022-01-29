@@ -12,10 +12,13 @@ export class AddAssignmentComponent implements OnInit {
 
   // associées au champs input du formulaire
   nomDevoir = "";
-  dateDeRendu!:Date;
+  dateDeRendu!: Date;
 
-  constructor(private assignmentService:AssignmentsService,
-    private router:Router) { }
+  matieres = ["Mathématiques", "Informatique", "Anglais", "Gestion d'entreprises", "Comptabilité"]
+  matiereSelectionnee = ''
+
+  constructor(private assignmentService: AssignmentsService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,16 +28,16 @@ export class AddAssignmentComponent implements OnInit {
     console.log("DATE = " + this.dateDeRendu);
 
     const newAssignment = new Assignment();
-    newAssignment.id = Math.round(Math.random()*100000);
+    newAssignment.id = Math.round(Math.random() * 100000);
     newAssignment.nom = this.nomDevoir;
     newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
 
     this.assignmentService.addAssignment(newAssignment)
-    .subscribe(reponse => {
-      console.log(reponse.message);
-      // maintenant il faut qu'on affiche la liste !!!
-      this.router.navigate(["/home"]);
-    });
+      .subscribe(reponse => {
+        console.log(reponse.message);
+        // maintenant il faut qu'on affiche la liste !!!
+        this.router.navigate(["/home"]);
+      });
   }
 }
