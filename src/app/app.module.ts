@@ -20,6 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY } from '@angular/material/snack-bar';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -30,14 +32,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { TableAssignmentsComponent } from './assignments/table-assignments/table-assignments.component';
-import {MatStepperModule } from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 
 const routes: Routes = [
   {
     path: "",
-    component: AssignmentsComponent
+    component: AssignmentsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "login",
@@ -45,19 +48,22 @@ const routes: Routes = [
   },
   {
     path: "register",
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: "home",
-    component: AssignmentsComponent
+    component: AssignmentsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "add",
-    component: AddAssignmentComponent
+    component: AddAssignmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "assignment/:id",
-    component: AssignmentDetailComponent
+    component: AssignmentDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "assignment/:id/edit",
@@ -75,23 +81,25 @@ const routes: Routes = [
     EditAssignmentComponent,
     TableAssignmentsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
-    BrowserModule, MatSelectModule,
+    BrowserModule, MatSelectModule, MatSnackBarModule,
     BrowserAnimationsModule, MatButtonToggleModule,
     MatButtonModule, MatIconModule, MatDividerModule,
     FormsModule, MatInputModule, MatDatepickerModule,
     MatNativeDateModule, MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule, HttpClientModule,
-    MatTableModule,MatSortModule,MatFormFieldModule,MatTabsModule,
+    MatTableModule, MatSortModule, MatFormFieldModule, MatTabsModule,
     RouterModule.forRoot(routes), MatStepperModule, ReactiveFormsModule
   ],
   exports: [
     MatSortModule, MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY, useValue: { duration: 2500 }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

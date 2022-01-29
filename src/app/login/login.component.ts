@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  nameUser:string=''
+  mdp:string=''
+
+  constructor(private http: HttpClient, private assignmentsService: AssignmentsService) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    this.assignmentsService.login(this.nameUser,this.mdp)
   }
 
 }

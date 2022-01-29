@@ -18,6 +18,15 @@ body {
 * https://materialtheme.arcsine.dev
 * Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48I2YwOTkwMCIsIj9lcjwjZmJlMGIzIiwiO2VyPCNlOTdjMDB$LCIlPmBePCM5ZDA2MmUiLCI~ZXI8I2UyYjRjMCIsIjtlcjwjODEwMzFkfiwid2Fybj5gXjwjOWQwNjJlIiwiP2VyPCNlMmI0YzAiLCI7ZXI8IzgxMDMxZH4sIj9UZXh0PCNmZmZmZmYiLCI~PTwjZmZmZmZmIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMxMjBmMWF$LCJmb250cz5bYEA8KC00Iiwic3BhY2luZz4wfSxgQDwoLTMiLCJzcGFjaW5nPjB9LGBAPCgtMn4sYEA8KC0xIiwic3BhY2luZz4wfSxgQDxoZWFkbGluZX4sYEA8dGl0bGUiLCJzcGFjaW5nPjB9LGBAPHN1YiktMiIsInNwYWNpbmc$MH0sYEA8c3ViKS0xIiwic3BhY2luZz4wfSxgQDxib2R5LTIiLCJzcGFjaW5nPjB9LGBAPGJvZHktMSIsInNwYWNpbmc$MH0sYEA8YnV0dG9uIiwic3BhY2luZz4wfSxgQDxjYXB0aW9uIiwic3BhY2luZz4wfSxgQDxpbnB1dCIsInNpemU$bnVsbCwic3BhY2luZz4wfV0sImljb25zPEZpbGxlZCIsIj9uZXNzPmZhbHNlLCJ2ZXJzaW9uPjExfQ==
 */
+.mat-snack-bar-container {
+  background-color: rgb(157 6 46 / 28%)!important;
+  min-width: 242px!important;
+}
+.mat-simple-snackbar {
+  justify-content: center!important;
+  font-size: 16px!important;
+}
+
 /* TABLE */
 .mat-table {
   background: #212031;

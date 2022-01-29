@@ -4,6 +4,9 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { Assignment } from '../assignments/assignment.model';
 import { LoggingService } from './logging.service';
 import { bdInitialAssignments } from './data';
+import { User } from '../login/user.model';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +14,31 @@ import { bdInitialAssignments } from './data';
 
 export class AssignmentsService {
   assignments: Assignment[] = [];
+  user: User|null = null
+  loggedin = false
 
-  constructor(private loggingService: LoggingService,
-    private http: HttpClient) { }
+  constructor(private loggingService: LoggingService,private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
   url = "http://localhost:8010/api/assignments";
   // url = "https://api-intense2022.herokuapp.com/api/assignments";
+
+  login(username: string, password: string) {
+    const user_payload = { username, password }
+    let url = 'http://localhost:8010/api/auth/login'
+    this.http.post<any>(url, user_payload).subscribe(result => {
+      if(result.err) {
+        console.error(result.err)
+        this.snackbar.open(result.err, '', {
+          duration: 3000
+        })
+      } else {
+        console.log(result.user);
+        this.router.navigate(['/home'])
+        this.loggedin = true
+      }
+    })
+  }
+
 
   getAssignments(): Observable<Assignment[]> {
     // return of(this.assignments);

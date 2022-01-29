@@ -1,4 +1,4 @@
-<div class="column">
+<div class="column" *ngIf="(router?.routerState?.snapshot?.url ?? '') !=='/login'">
   <div class="row">
     <button mat-icon-button (click)="clickIcon()">
       <mat-icon class="menuicon">menu</mat-icon>

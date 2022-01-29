@@ -11,28 +11,32 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'Application de gestion des assignments';
 
-isClicked:boolean=false;
+  isClicked: boolean = false;
+  router:Router|null=null
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    router: Router,
     private assignmentsService: AssignmentsService
-  ) {}
+  ) {
+    this.router=router
+  }
 
-  clickIcon(){
-    if (!this.isClicked) this.isClicked=true;
-    else this.isClicked=false;
+  clickIcon() {
+    if (!this.isClicked) this.isClicked = true;
+    else this.isClicked = false;
   }
 
   login() {
-    if (!this.authService.loggedIn) {
-      console.log("Je n'étais pas connecté, je suis maintenant loggé");
-      this.authService.logIn();
-    } else {
-      console.log("J'étais  connecté, je suis maintenant déloggé");
-      this.authService.logOut();
-      this.router.navigate(['/home']);
-    }
+    console.log(this.router)
+    // if (!this.authService.loggedIn) {
+      // console.log("Je n'étais pas connecté, je suis maintenant loggé");
+    //   this.authService.logIn();
+    // } else {
+    //   console.log("J'étais  connecté, je suis maintenant déloggé");
+    //   this.authService.logOut();
+    //   this.router.navigate(['/home']);
+    // }
   }
 
   remplirBD() {
@@ -43,7 +47,7 @@ isClicked:boolean=false;
 
       // replaceUrl = true = force le refresh, même si
       // on est déjà sur la page d’accueil
-      this.router.navigate(['/home'], { replaceUrl: true });
+      this.router?.navigate(['/home'], { replaceUrl: true });
     });
   }
 }
