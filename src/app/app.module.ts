@@ -22,18 +22,29 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { Routes, RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { TableAssignmentsComponent } from './assignments/table-assignments/table-assignments.component';
+import {MatStepperModule } from '@angular/material/stepper';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component'
 
 const routes: Routes = [
   {
     path: "",
     component: AssignmentsComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   },
   {
     path: "home",
@@ -61,7 +72,9 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    TableAssignmentsComponent
+    TableAssignmentsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +84,7 @@ const routes: Routes = [
     MatNativeDateModule, MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule, HttpClientModule,
     MatTableModule,MatSortModule,MatFormFieldModule,MatTabsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes), MatStepperModule, ReactiveFormsModule
   ],
   exports:[
     MatSortModule,MatFormFieldModule,
