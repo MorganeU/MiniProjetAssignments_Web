@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/login/user.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Assignment } from '../assignment.model';
@@ -12,12 +13,22 @@ import { Assignment } from '../assignment.model';
 })
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
+  assignmentProf?: User;
   rendu: string = '';
 
-  constructor(private assignmentService: AssignmentsService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService) { }
+  assignmentService: AssignmentsService
+
+  imgMatiere=[
+    {nom:"Comptabilité", url:"https://formation-cfr.fr/wp-content/uploads/2021/05/gestionnaire-comptable.jpg"},
+    {nom:"Mathématiques", url:"https://www.super-bac.com/articles/wp-content/uploads/2020/07/E3C-maths-bac.jpeg"},
+    {nom:"Anglais", url:"https://i0.wp.com/up2school.com/bac/wp-content/uploads/2019/05/Drapeau-Anglais.jpg?resize=800%2C531&ssl=1"},
+    {nom:"Gestion d'entreprises", url:"https://m.radioactif.com/images/blog/806518_large.jpg"},
+    {nom:"Informatique", url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINt3I3wKtG-IgPqycbIVLNBxXMi6wb491zg&usqp=CAU"},
+  ]
+
+  constructor(assignmentService: AssignmentsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+    this.assignmentService = assignmentService
+  }
 
   ngOnInit(): void {
     console.log("DANS COMPOSANT DETAIL")
@@ -31,10 +42,11 @@ export class AssignmentDetailComponent implements OnInit {
     console.log("ID = " + id);
 
     this.assignmentService.getAssignment(id)
-      .subscribe(assignment => {
+      .subscribe(data => {
         // on utilise this.assignmentTransmis puisque c'est la propriété
         // utilisée dans le template HTML
-        this.assignmentTransmis = assignment;
+        this.assignmentTransmis = data?.assignment;
+        this.assignmentProf = data?.prof
       })
   }
 
@@ -90,5 +102,9 @@ export class AssignmentDetailComponent implements OnInit {
     if (r) this.rendu = 'rendu'
     else this.rendu = 'non rendu'
     return this.rendu
+  }
+
+  getUrlMatiere(){
+    return this.imgMatiere.find(m => m.nom===this.assignmentTransmis?.matiere)?.url
   }
 }

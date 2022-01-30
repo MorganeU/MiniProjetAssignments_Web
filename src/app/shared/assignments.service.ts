@@ -62,21 +62,12 @@ export class AssignmentsService {
     return this.http.get<any>(url);
   }
 
-  getAssignment(id: number): Observable<Assignment | undefined> {
-    //let assignment = this.assignments.find(elem => elem.id === id);
-
-    //return of(assignment);
-
-    return this.http.get<Assignment>(this.url + "/" + id);
+  getAssignment(id: number): Observable<{assignment: Assignment, prof: User} | undefined> {
+    return this.http.get<{assignment: Assignment, prof: User}>(this.url + "/" + id);
   }
 
   addAssignment(assignment: Assignment): Observable<any> {
-    //this.assignments.push(assignment);
-
     this.loggingService.log(assignment.nom, "ajouté");
-
-    //return of(`Assignment ${assignment.nom} ajouté`);
-
     return this.http.post<Assignment>(this.url, assignment);
   }
 

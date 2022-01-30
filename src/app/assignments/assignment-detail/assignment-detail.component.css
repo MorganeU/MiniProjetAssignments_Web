@@ -5,6 +5,30 @@ mat-card{
 
 .bottom {
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-end;
+  gap:15px;
+}
+
+.divimg{
+  position: absolute;
+  display: flex;
+  gap:15px;
+  top:20px;
+  right: 20px;
+}
+
+img{
+  width: 80px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.editbutton{
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #fca85f;
+  color: #9d062e !important;
+  margin-top: 15px;
+  font-weight: 600;
 }

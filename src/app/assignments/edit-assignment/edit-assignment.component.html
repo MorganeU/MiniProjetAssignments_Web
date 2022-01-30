@@ -1,19 +1,33 @@
 <div class="container" *ngIf="assignment">
   <form ngForm class="form">
-    <h3>Edition de l'assignment {{assignment.nom}}</h3>
-    
-    <mat-form-field>
-      <input matInput placeholder="Edition du nom" [(ngModel)]="nomAssignment" name="assignment-name">
-    </mat-form-field>
+    <div class="column">
+      <h2>Edition de l'assignment {{assignment.nom}}</h2>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Edition du nom" [(ngModel)]="nomAssignment" name="assignment-name">
+        </mat-form-field>
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu"
+            name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="onSaveAssignment()">
-      Sauver
-    </button>
+        <mat-form-field *ngIf="assignment.rendu">
+          <input matInput placeholder="Edition de la note" [(ngModel)]="note" name="assignment-note" type='number'
+            min='0' max='20'>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Edition de la remarque" [(ngModel)]="remarque"
+          name="assignment-remarque"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onSaveAssignment()">
+        Enregistrer
+      </button>
+    </div>
   </form>
 </div>

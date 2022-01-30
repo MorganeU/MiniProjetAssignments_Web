@@ -3,6 +3,7 @@ export class User {
     username:string;
     password:string;
     role: 'Eleve'|'Professeur';
-    matiere?:string
+    matiere?:string;
+    photo?:string;
   }
   
