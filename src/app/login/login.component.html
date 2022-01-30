@@ -7,7 +7,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Mot de passe" [(ngModel)]="mdp" name='mdp'>
+      <input matInput placeholder="Mot de passe" [(ngModel)]="mdp" name='mdp' type="password">
     </mat-form-field>
 
     <button mat-raised-button type="submit" (click)="login()" [disabled]='!nameUser||!mdp'>Valider</button>

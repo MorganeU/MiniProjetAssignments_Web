@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/login/user.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
@@ -26,7 +27,8 @@ export class AssignmentDetailComponent implements OnInit {
     {nom:"Informatique", url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINt3I3wKtG-IgPqycbIVLNBxXMi6wb491zg&usqp=CAU"},
   ]
 
-  constructor(assignmentService: AssignmentsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+  constructor(assignmentService: AssignmentsService, private route: ActivatedRoute, private router: Router, private authService: AuthService,
+    private snackbar: MatSnackBar) {
     this.assignmentService = assignmentService
   }
 
@@ -79,19 +81,14 @@ export class AssignmentDetailComponent implements OnInit {
           // que les données sont à jour et que l'assignment a été supprimé !
           this.router.navigate(["/home"]);
         })
+        this.snackbar.open(this.assignmentTransmis.nom+" a été supprimé", '', {
+          duration: 3000
+        })
     }
   }
 
   onClickEdit() {
-    // correspond à /assignment/1/edit?nom=Buffa&prenom=Michel#edit
-    this.router.navigate(['/assignment', this.assignmentTransmis?.id, 'edit'],
-      {
-        queryParams: {
-          nom: 'Buffa',
-          prenom: 'Michel'
-        },
-        fragment: 'edit'
-      });
+    this.router.navigate(['/assignment', this.assignmentTransmis?.id, 'edit']);
   }
 
   isAdmin() {

@@ -16,7 +16,7 @@ export class AssignmentsService {
   assignments: Assignment[] = [];
   // user: User|null = null
   // loggedin = false
-  user: User|null = {_id: 'pipou',username:'profAnglais', password:'prof',role:'Professeur',matiere:'Anglais'}
+  user: User|null = {_id: '61f67f1c9703020b7d4c0505',username:'profAnglais', password:'prof',role:'Professeur',matiere:'Anglais'}
   loggedin = true
 
   constructor(private loggingService: LoggingService,private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
@@ -59,6 +59,7 @@ export class AssignmentsService {
     if (dateSort) url += `&dateSort=${dateSort}`
     if (filterRendu != null && filterRendu != undefined) url += `&filterRendu=${filterRendu}`
     if (search) url += `&search=${search}`
+    url += `&userId=${this.user?._id}`
     return this.http.get<any>(url);
   }
 

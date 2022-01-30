@@ -36,13 +36,14 @@ export class TableAssignmentsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAssignments();
+    if(this.assignmentService.user?.role=="Eleve") this.displayedColumns.splice(1,1)
+    if(this.assignmentService.user?.role=="Professeur") this.displayedColumns.splice(2,1)
   }
 
 
   ngAfterViewInit(): void {
     this.sort.sortChange.subscribe((sort) => {
       this.getAssignments()
-
     });
   }
 

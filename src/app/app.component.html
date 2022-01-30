@@ -1,8 +1,13 @@
 <div class="column" *ngIf="(router?.routerState?.snapshot?.url ?? '') !=='/login'">
   <div class="row">
-    <button mat-icon-button (click)="clickIcon()">
+    <button mat-icon-button (click)="clickIcon()" *ngIf="assignmentsService.user?.role=='Professeur'">
       <mat-icon class="menuicon">menu</mat-icon>
     </button>
+    <a routerLink="/home" *ngIf="assignmentsService.user?.role=='Eleve'">
+      <button mat-icon-button>
+        <mat-icon class="menuicon">home</mat-icon>
+      </button>
+    </a>
     <h2>{{ title }}</h2>
   </div>
   <div class="row">
@@ -10,7 +15,9 @@
       <mat-icon>account_circle</mat-icon> {{ assignmentsService.user?.username }}
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="assignmentsService.logout()"><mat-icon>exit_to_app</mat-icon> Se déconnecter</button>
+      <button mat-menu-item (click)="assignmentsService.logout()">
+        <mat-icon>exit_to_app</mat-icon> Se déconnecter
+      </button>
     </mat-menu>
     <!-- <button mat-raised-button color="primary" (click)="remplirBD()">
       PEUPLER BD

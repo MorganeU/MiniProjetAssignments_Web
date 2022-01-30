@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
@@ -14,9 +15,10 @@ export class EditAssignmentComponent implements OnInit {
   nomAssignment?: string;
   dateDeRendu?: Date;
   note?: number
-  remarque?: string=''
+  remarque?: string = ''
 
-  constructor(private route: ActivatedRoute, private router: Router, private assignmentService: AssignmentsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private assignmentService: AssignmentsService,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     // exemple de récupération de "query params" et "fragment"
@@ -74,5 +76,9 @@ export class EditAssignmentComponent implements OnInit {
         // navigation vers la home page
         this.router.navigate(['/home']);
       });
+
+    this.snackbar.open(this.assignment.nom + " a été modifié", '', {
+      duration: 3000
+    })
   }
 }

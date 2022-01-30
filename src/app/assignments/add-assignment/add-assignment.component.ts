@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
@@ -13,12 +14,12 @@ export class AddAssignmentComponent implements OnInit {
   // associées au champs input du formulaire
   nomDevoir = "";
   dateDeRendu!: Date;
-  remarques:string=''
+  remarques: string = ''
 
   matieres = ["Mathématiques", "Informatique", "Anglais", "Gestion d'entreprises", "Comptabilité"]
   matiereSelectionnee = ''
 
-  constructor(private assignmentService: AssignmentsService,
+  constructor(private assignmentService: AssignmentsService, private snackbar: MatSnackBar,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.rendu = false;
     newAssignment.remarques = this.remarques;
     newAssignment.matiere = this.assignmentService.user?.matiere ?? '';
-    
+
 
     this.assignmentService.addAssignment(newAssignment)
       .subscribe(reponse => {
@@ -40,5 +41,9 @@ export class AddAssignmentComponent implements OnInit {
         // maintenant il faut qu'on affiche la liste !!!
         this.router.navigate(["/home"]);
       });
+
+    this.snackbar.open(this.nomDevoir+" a été ajouté", '', {
+      duration: 3000
+    })
   }
 }
