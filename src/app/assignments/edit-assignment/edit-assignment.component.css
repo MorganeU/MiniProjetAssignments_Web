@@ -4,6 +4,37 @@
   margin: 40px;
   background-color: #1a1826;
   border-radius: 19px;
-  padding: 15px 40px 40px 40px ;    
+  padding: 15px 40px 40px 40px;
   color: white;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap:20px;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+textarea{
+  min-height: 90px;
+}
+
+button {
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #fca85f !important;
+  color: #9d062e !important;
+  font-weight: 600;
+  font-size: 16px;
 }
