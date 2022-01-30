@@ -23,7 +23,7 @@ export class TableAssignmentsComponent implements OnInit, AfterViewInit {
   hasNextPage: boolean = false;
   nextPage: number = 0;
   // pour la table
-  displayedColumns: string[] = ['Nom', 'Auteur', 'Matiere', 'Date', 'Etat', 'Remarques', 'Details'];
+  displayedColumns: string[] = ['Nom', 'Auteur', 'Matiere', 'Date', 'Etat', 'Notes', 'Details'];
   rendu: string = '';
   @ViewChild(MatSort) sort: MatSort = new MatSort;
   public data = new MatTableDataSource<Assignment>();
@@ -73,7 +73,6 @@ export class TableAssignmentsComponent implements OnInit, AfterViewInit {
   }
 
   getColor(a: any) {
-    console.log(a.rendu)
     return a.rendu ? 'rendu' : 'nonRendu';
   }
 

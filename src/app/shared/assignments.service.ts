@@ -14,8 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class AssignmentsService {
   assignments: Assignment[] = [];
-  user: User|null = null
-  loggedin = false
+  // user: User|null = null
+  // loggedin = false
+  user: User|null = {_id: 'pipou',username:'profAnglais', password:'prof',role:'Professeur',matiere:'Anglais'}
+  loggedin = true
 
   constructor(private loggingService: LoggingService,private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
@@ -35,10 +37,16 @@ export class AssignmentsService {
         console.log(result.user);
         this.router.navigate(['/home'])
         this.loggedin = true
+        this.user=result.user
       }
     })
   }
 
+  logout(){
+    this.user=null
+    this.loggedin=false
+    this.router.navigate(['/login'])
+  }
 
   getAssignments(): Observable<Assignment[]> {
     // return of(this.assignments);
@@ -119,6 +127,10 @@ export class AssignmentsService {
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.auteur = a.auteur;
+      nouvelAssignment.matiere = a.matiere;
+      nouvelAssignment.note = (a.rendu) ? a.note : undefined;
+      nouvelAssignment.remarques = a.remarques;
 
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
     });

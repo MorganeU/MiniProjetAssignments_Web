@@ -13,6 +13,7 @@ export class AddAssignmentComponent implements OnInit {
   // associées au champs input du formulaire
   nomDevoir = "";
   dateDeRendu!: Date;
+  remarques:string=''
 
   matieres = ["Mathématiques", "Informatique", "Anglais", "Gestion d'entreprises", "Comptabilité"]
   matiereSelectionnee = ''
@@ -24,14 +25,14 @@ export class AddAssignmentComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("NOM = " + this.nomDevoir);
-    console.log("DATE = " + this.dateDeRendu);
-
     const newAssignment = new Assignment();
     newAssignment.id = Math.round(Math.random() * 100000);
     newAssignment.nom = this.nomDevoir;
     newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
+    newAssignment.remarques = this.remarques;
+    newAssignment.matiere = this.assignmentService.user?.matiere ?? '';
+    
 
     this.assignmentService.addAssignment(newAssignment)
       .subscribe(reponse => {

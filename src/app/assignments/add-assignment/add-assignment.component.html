@@ -4,7 +4,7 @@
     <mat-form-field>
       <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir">
     </mat-form-field>
-    <!-- MATIERE -->
+    <!-- MATIERE
     <mat-form-field>
       <mat-label>Nom de la matière</mat-label>
       <mat-select [(value)]="matiereSelectionnee">
@@ -12,12 +12,16 @@
           {{m}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
     <!-- DATE -->
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <input matInput [matDatepicker]="picker" [(ngModel)]="dateDeRendu" placeholder="Date de rendu" name="date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- REMARQUES -->
+    <mat-form-field>
+      <textarea matInput [(ngModel)]="remarques" name="remarques" placeholder="Remarques"></textarea>
     </mat-form-field>
 
     <!-- BUTTON -->
@@ -26,25 +30,3 @@
     </button>
   </div>
 </form>
-
-<!-- <div style='padding: 3em'>
-  <mat-horizontal-stepper>
-    <mat-step label="Nom du devoir">
-      <input [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir">
-      <button matStepperNext>Suivant</button>
-
-    </mat-step>
-    <mat-step label="Date de rendu">
-      <input matInput [matDatepicker]="picker" [(ngModel)]="dateDeRendu" placeholder="Date de rendu" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <button matStepperPrevious>Précedent</button>
-      <button matStepperNext>Suivant</button>
-    </mat-step>
-    <mat-step label="Ajouter le devoir">
-      <button mat-stroked-button color="primary">
-        Appuyer pour valider l'ajout
-      </button>
-    </mat-step>
-  </mat-horizontal-stepper>
-</div> -->
