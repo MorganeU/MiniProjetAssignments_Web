@@ -5,6 +5,15 @@ mat-card{
 
 .bottom {
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
+  gap:15px;
+}
+
+.editbutton{
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #fca85f;
+  color: #9d062e !important;
+  margin-top: 15px;
+  font-weight: 600;
 }
