@@ -1,9 +1,18 @@
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 40px;
   border-radius: 19px;
   background-color: #1a1826;
+  padding: 20px;
+  padding-bottom: 50px;
+  color:white;
+}
+
+h2{
+  text-align: center;
+  color:white;
 }
 
 .column {
@@ -13,6 +22,27 @@
   width: fit-content;
 }
 
+.row{
+  display: flex;
+  gap: 15px;
+}
+
+input[name='nom']{
+width: 70%;
+}
+
+textarea{
+  min-height: 90px;
+}
+
 button{
-  
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #fca85f;
+  color: #9d062e !important;
+  margin-top: 15px;
+}
+
+button:disabled{
+  color: black !important;
+  background: #393a56;
 }
