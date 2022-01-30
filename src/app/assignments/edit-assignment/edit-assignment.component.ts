@@ -9,14 +9,14 @@ import { Assignment } from '../assignment.model';
   styleUrls: ['./edit-assignment.component.css']
 })
 export class EditAssignmentComponent implements OnInit {
-  assignment?:Assignment;
+  assignment?: Assignment;
   // champs du formulaire
-  nomAssignment?:string;
-  dateDeRendu?:Date;
+  nomAssignment?: string;
+  dateDeRendu?: Date;
+  note?: number
+  remarque?: string=''
 
-  constructor(private route:ActivatedRoute,
-              private router:Router,
-              private assignmentService:AssignmentsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private assignmentService: AssignmentsService) { }
 
   ngOnInit(): void {
     // exemple de récupération de "query params" et "fragment"
@@ -34,14 +34,16 @@ export class EditAssignmentComponent implements OnInit {
     const id = +this.route.snapshot.params['id'];
 
     this.assignmentService.getAssignment(id)
-    .subscribe(assignment => {
-      // Pour que la "vue" affiche les informations
-      // de l'assignment qu'on édite....
-      this.assignment = assignment;
-      // pré-remplit le formulaire dès l'affichage
-      this.nomAssignment = assignment?.nom;
-      this.dateDeRendu = assignment?.dateDeRendu;
-    })
+      .subscribe(assignment => {
+        // Pour que la "vue" affiche les informations
+        // de l'assignment qu'on édite....
+        this.assignment = assignment;
+        // pré-remplit le formulaire dès l'affichage
+        this.nomAssignment = assignment?.nom;
+        this.dateDeRendu = assignment?.dateDeRendu;
+        this.note = assignment?.note
+        this.remarque = assignment?.remarques
+      })
   }
 
   onSaveAssignment() {
@@ -54,6 +56,15 @@ export class EditAssignmentComponent implements OnInit {
     if (this.dateDeRendu) {
       this.assignment.dateDeRendu = this.dateDeRendu;
     }
+
+    if (this.note) {
+      this.assignment.note = this.note;
+    }
+
+    if (this.remarque) {
+      this.assignment.remarques = this.remarque;
+    }
+
     this.assignmentService
       .updateAssignment(this.assignment)
       .subscribe((reponse) => {
@@ -62,7 +73,5 @@ export class EditAssignmentComponent implements OnInit {
         // navigation vers la home page
         this.router.navigate(['/home']);
       });
-
-
   }
- }
+}
