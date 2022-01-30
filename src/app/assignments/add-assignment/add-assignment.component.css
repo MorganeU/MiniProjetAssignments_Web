@@ -27,10 +27,6 @@ h2{
   gap: 15px;
 }
 
-input[name='nom']{
-width: 70%;
-}
-
 textarea{
   min-height: 90px;
 }
