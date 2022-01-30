@@ -16,8 +16,8 @@ export class AssignmentsService {
   assignments: Assignment[] = [];
   // user: User|null = null
   // loggedin = false
-  user: User|null = {_id: '61f67f1c9703020b7d4c0505',username:'profAnglais', password:'prof',role:'Professeur',matiere:'Anglais'}
-  loggedin = true
+  user: User|null = null
+  loggedin = false
 
   constructor(private loggingService: LoggingService,private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
