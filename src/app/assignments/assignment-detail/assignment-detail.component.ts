@@ -14,10 +14,11 @@ export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
   rendu: string = '';
 
-  constructor(private assignmentService: AssignmentsService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService) { }
+  assignmentService: AssignmentsService
+
+  constructor(assignmentService: AssignmentsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+    this.assignmentService = assignmentService
+  }
 
   ngOnInit(): void {
     console.log("DANS COMPOSANT DETAIL")
