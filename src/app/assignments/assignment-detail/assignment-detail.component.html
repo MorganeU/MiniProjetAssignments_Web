@@ -1,25 +1,25 @@
 <mat-card *ngIf="assignmentTransmis">
   <div class="">
-  <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
-  <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
-  <mat-card-subtitle>Devoir {{getRendu(assignmentTransmis.rendu)}}</mat-card-subtitle>
-</div>
-<div class="">
-  <p>Matière : </p>
-  <p>Note : </p>
-  <p>Remarques : </p>
-</div>
+    <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
+    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+    <mat-card-subtitle>Devoir {{getRendu(assignmentTransmis.rendu)}}</mat-card-subtitle>
+  </div>
+  <div class="">
+    <p>Matière : {{assignmentTransmis.matiere}}</p>
+    <p *ngIf="assignmentTransmis.rendu">Note : {{assignmentTransmis.note}}</p>
+    <p>Remarques : <br> {{assignmentTransmis.remarques}}</p>
+  </div>
 
   <div class="bottom">
-    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+    <mat-checkbox *ngIf="!assignmentTransmis.rendu && assignmentService.user?.role=='Eleve'"
+      (click)="onAssignmentRendu()">
       Rendu
     </mat-checkbox>
-    <nav>
-      <button [disabled]="!isAdmin()" mat-stroked-button color="primary" (click)="onClickEdit()">
-        EDIT
-      </button>
-    </nav>
-    <button mat-raised-button color="accent" (click)="onDeleteAssignment()">
+    <button mat-stroked-button color="primary" (click)="onClickEdit()" class="editbutton"
+      *ngIf="assignmentService.user?.role=='Professeur'">
+      EDIT
+    </button>
+    <button mat-raised-button color="accent" (click)="onDeleteAssignment()" *ngIf="assignmentService.user?.role=='Professeur'">
       DELETE
     </button>
   </div>
