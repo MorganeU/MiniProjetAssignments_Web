@@ -22,6 +22,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY } from '@angular/material/snack-bar';
+import{MatMenuModule} from '@angular/material/menu'
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
@@ -88,7 +89,7 @@ const routes: Routes = [
     BrowserAnimationsModule, MatButtonToggleModule,
     MatButtonModule, MatIconModule, MatDividerModule,
     FormsModule, MatInputModule, MatDatepickerModule,
-    MatNativeDateModule, MatListModule, MatCardModule,
+    MatNativeDateModule, MatListModule, MatCardModule, MatMenuModule,
     MatCheckboxModule, MatSlideToggleModule, HttpClientModule,
     MatTableModule, MatSortModule, MatFormFieldModule, MatTabsModule,
     RouterModule.forRoot(routes), MatStepperModule, ReactiveFormsModule

@@ -12,14 +12,15 @@ export class AppComponent {
   title = 'Application de gestion des assignments';
 
   isClicked: boolean = false;
-  router:Router|null=null
 
-  constructor(
-    private authService: AuthService,
-    router: Router,
-    private assignmentsService: AssignmentsService
-  ) {
-    this.router=router
+  router: Router
+  assignmentsService:AssignmentsService
+
+  userName:string=''
+
+  constructor(private authService: AuthService, router: Router, assignmentsService: AssignmentsService) {
+    this.router = router
+    this.assignmentsService=assignmentsService
   }
 
   clickIcon() {
@@ -30,7 +31,7 @@ export class AppComponent {
   login() {
     console.log(this.router)
     // if (!this.authService.loggedIn) {
-      // console.log("Je n'étais pas connecté, je suis maintenant loggé");
+    // console.log("Je n'étais pas connecté, je suis maintenant loggé");
     //   this.authService.logIn();
     // } else {
     //   console.log("J'étais  connecté, je suis maintenant déloggé");
@@ -47,7 +48,7 @@ export class AppComponent {
 
       // replaceUrl = true = force le refresh, même si
       // on est déjà sur la page d’accueil
-      this.router?.navigate(['/home'], { replaceUrl: true });
+      this.router.navigate(['/home'], { replaceUrl: true });
     });
   }
 }

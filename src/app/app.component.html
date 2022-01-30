@@ -6,10 +6,16 @@
     <h2>{{ title }}</h2>
   </div>
   <div class="row">
-    <mat-slide-toggle (click)="login()" [color]="'warn'">Login</mat-slide-toggle>
+    <button mat-button class='userbutton' [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon> {{ assignmentsService.user?.username }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="assignmentsService.logout()"><mat-icon>exit_to_app</mat-icon> Se déconnecter</button>
+    </mat-menu>
+    <!-- <mat-slide-toggle (click)="login()" [color]="'warn'">Login</mat-slide-toggle>
     <button mat-raised-button color="primary" (click)="remplirBD()">
       PEUPLER BD
-    </button>
+    </button> -->
   </div>
 </div>
 

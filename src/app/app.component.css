@@ -21,7 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #F67D2E;
+  background-color: #f67d2e;
   width: 100%;
   height: 70px;
   z-index: 10;
@@ -40,6 +40,17 @@ h2 {
   color: white;
 }
 
+.userbutton {
+  color: white;
+  font-size: 18px;
+}
+
+.userbutton .mat-icon {
+  height: unset;
+  width: unset;
+  font-size: 26px;
+}
+
 button {
   height: 40px;
 }
@@ -53,7 +64,7 @@ button {
   font-size: 17px;
 }
 
-mat-icon{
+mat-icon {
   font-size: 30px;
 }
 
