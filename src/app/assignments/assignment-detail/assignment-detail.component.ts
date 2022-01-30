@@ -19,14 +19,6 @@ export class AssignmentDetailComponent implements OnInit {
 
   assignmentService: AssignmentsService
 
-  imgMatiere=[
-    {nom:"Comptabilité", url:"https://formation-cfr.fr/wp-content/uploads/2021/05/gestionnaire-comptable.jpg"},
-    {nom:"Mathématiques", url:"https://www.super-bac.com/articles/wp-content/uploads/2020/07/E3C-maths-bac.jpeg"},
-    {nom:"Anglais", url:"https://i0.wp.com/up2school.com/bac/wp-content/uploads/2019/05/Drapeau-Anglais.jpg?resize=800%2C531&ssl=1"},
-    {nom:"Gestion d'entreprises", url:"https://m.radioactif.com/images/blog/806518_large.jpg"},
-    {nom:"Informatique", url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINt3I3wKtG-IgPqycbIVLNBxXMi6wb491zg&usqp=CAU"},
-  ]
-
   constructor(assignmentService: AssignmentsService, private route: ActivatedRoute, private router: Router, private authService: AuthService,
     private snackbar: MatSnackBar) {
     this.assignmentService = assignmentService
@@ -102,6 +94,6 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   getUrlMatiere(){
-    return this.imgMatiere.find(m => m.nom===this.assignmentTransmis?.matiere)?.url
+    return this.assignmentProf?.photoMatiere
   }
 }

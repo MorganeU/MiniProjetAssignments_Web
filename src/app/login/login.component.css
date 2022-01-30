@@ -3,6 +3,14 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  gap: 70px;
+}
+
+.container {
+  background-color: #1a1826;
+  display: flex;
+  border-radius: 19px;
+
 }
 
 form {
@@ -10,10 +18,12 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #1a1826;
-  border-radius: 19px;
   padding: 50px 70px;
-  width: 450px;
+  width: 500px;
+}
+
+form:last-child {
+  border-left: 2px solid rgb(255 255 255 / 0.1);
 }
 
 p {
@@ -37,4 +47,14 @@ p {
 :host::ng-deep .mat-raised-button:not([class*="mat-elevation-z"]):disabled {
   color: black;
   background: #393a56;
+}
+
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 172px !important;
 }

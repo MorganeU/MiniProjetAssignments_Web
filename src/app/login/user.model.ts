@@ -5,5 +5,6 @@ export class User {
     role: 'Eleve'|'Professeur';
     matiere?:string;
     photo?:string;
+    photoMatiere?:string;
   }
   

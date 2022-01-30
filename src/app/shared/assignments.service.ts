@@ -48,6 +48,23 @@ export class AssignmentsService {
     this.router.navigate(['/login'])
   }
 
+  signin(inscriptionData: any) {
+    const url = 'http://localhost:8010/api/auth/signin'
+    return this.http.post<any>(url, inscriptionData).subscribe(result => {
+      if(result.err) {
+        console.error(result.err)
+        this.snackbar.open(result.err, '', {
+          duration: 3000
+        })
+      } else {
+        console.log(result.user);
+        this.router.navigate(['/home'])
+        this.loggedin = true
+        this.user=result.user
+      }
+    })
+  }
+
   getAssignments(): Observable<Assignment[]> {
     // return of(this.assignments);
 
