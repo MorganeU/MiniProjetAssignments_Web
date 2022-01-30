@@ -21,12 +21,14 @@ export class AssignmentsService {
 
   constructor(private loggingService: LoggingService,private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
-  url = "http://localhost:8010/api/assignments";
-  // url = "https://api-intense2022.herokuapp.com/api/assignments";
+  // url = "http://localhost:8010/api/assignments";
+  url = "https://web-project-assignment-back.herokuapp.com/api/assignments";
 
   login(username: string, password: string) {
     const user_payload = { username, password }
-    let url = 'http://localhost:8010/api/auth/login'
+    // let url = 'http://localhost:8010/api/auth/login'
+    let url = 'https://web-project-assignment-back.herokuapp.com/api/auth/login'
+    
     this.http.post<any>(url, user_payload).subscribe(result => {
       if(result.err) {
         console.error(result.err)
@@ -49,7 +51,9 @@ export class AssignmentsService {
   }
 
   signin(inscriptionData: any) {
-    const url = 'http://localhost:8010/api/auth/signin'
+    // const url = 'http://localhost:8010/api/auth/signin'
+    const url = 'https://web-project-assignment-back.herokuapp.com/api/auth/signin'
+
     return this.http.post<any>(url, inscriptionData).subscribe(result => {
       if(result.err) {
         console.error(result.err)
